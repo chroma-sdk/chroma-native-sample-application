@@ -1,7 +1,7 @@
 # Razer ChromaSDK Sample Application (C++)
 ![sdkbadge]
 
-This is a community maintained version of Razer's official sample application written in C++. This allows us as a community to provide more sample effects, improvements and maintain best practices and anyone can contribute to its development.
+This is a community maintained version of Razer's official sample application written in C++. This allows us as a community to provide more sample effects, improvements and maintain best practices. Anyone can contribute to its development.
 
 Razer is a trademark and/or a registered trademark of Razer USA Ltd.
 All other trademarks are property of their respective owners.
