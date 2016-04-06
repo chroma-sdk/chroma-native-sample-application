@@ -1,7 +1,10 @@
 # Razer ChromaSDK Sample Application (C++)
 ![sdkbadge]
 
-This is a community maintained version of Razer's official sample application written in C++. This allows us as a community to provide more sample effects, improvements and maintain best practices.
+This is a community maintained version of Razer's official sample application written in C++. This allows us as a community to provide more sample effects, improvements and maintain best practices and anyone can contribute to its development.
+
+Razer is a trademark and/or a registered trademark of Razer USA Ltd.
+All other trademarks are property of their respective owners.
 
 *While every effort is made to ensure the sample application is updated to support the latest SDK version, there is a chance that issues do occur due to your SDK version being out of date. Please ensure you always update to the very latest version of Synapse before you [submit an issue][newissue].*
 
