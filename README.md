@@ -1,7 +1,11 @@
+
+
 # Razer ChromaSDK Sample Application (C++)
+![sdkbadge]
+
 This is a community maintained version of Razer's official sample application written in C++. This allows us as a community to provide more sample effects, improvements and maintain best practices.
 
-## Keeping up-to-date
+### Keeping up-to-date
 
 *While every effort is made to ensure the sample application is updated to support the latest SDK version, there is a chance that issues do occur due to your SDK version being out of date. Please ensure you always update to the very latest version of Synapse before you [submit an issue][newissue].*
 
@@ -13,7 +17,7 @@ If you've found any issues or would like to suggest any improvements, please tak
 
 [![Gitter][gitterbadge]][gitter]
 
-*For discussing, you can join the Gitter chat using the badge above.*
+*You can join the Gitter discussion using the badge above.*
 
 Contributors are very welcome! If you got code fixes, please [submit a pull request][newpull] here on GitHub.
 
@@ -23,3 +27,4 @@ Contributors are very welcome! If you got code fixes, please [submit a pull requ
 
 [gitter]: https://gitter.im/ChromaSchool/OfficialSample?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
 [gitterbadge]: https://badges.gitter.im/Join%20Chat.svg
+[sdkbadge]: https://img.shields.io/badge/Chroma%20SDK-1.4.1-brightgreen.svg
