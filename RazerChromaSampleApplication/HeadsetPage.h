@@ -26,4 +26,5 @@ public:
     afx_msg void OnBnClickedButtonHealthAmmoMana();
     afx_msg void OnBnClickedButtonAlerts();
     afx_msg void OnBnClickedButtonDamageTaken();
+	afx_msg void OnBnClickedButtonQuery();
 };

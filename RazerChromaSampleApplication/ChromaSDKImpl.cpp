@@ -1517,7 +1517,7 @@ BOOL CChromaSDKImpl::IsDeviceConnected(RZDEVICEID DeviceId)
     {
         ChromaSDK::DEVICE_INFO_TYPE DeviceInfo = {};
         RZRESULT Result = QueryDevice(DeviceId, DeviceInfo);
-
+		OutputDebugStringA((DeviceInfo.DeviceType == DeviceInfo.DEVICE_HEADSET ? "Headset" : "Not a headset"));
         ASSERT(Result == RZRESULT_SUCCESS);
 
         return DeviceInfo.Connected;

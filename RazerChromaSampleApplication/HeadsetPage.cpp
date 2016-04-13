@@ -32,6 +32,7 @@ BEGIN_MESSAGE_MAP(CHeadsetPage, CPropertyPage)
     ON_BN_CLICKED(IDC_BUTTON_HEALTH_AMMO_MANA, &CHeadsetPage::OnBnClickedButtonHealthAmmoMana)
     ON_BN_CLICKED(IDC_BUTTON_ALERTS, &CHeadsetPage::OnBnClickedButtonAlerts)
     ON_BN_CLICKED(IDC_BUTTON_DAMAGE_TAKEN, &CHeadsetPage::OnBnClickedButtonDamageTaken)
+	ON_BN_CLICKED(IDC_BUTTON_QUERY, &CHeadsetPage::OnBnClickedButtonQuery)
 END_MESSAGE_MAP()
 
 
@@ -57,4 +58,9 @@ void CHeadsetPage::OnBnClickedButtonDamageTaken()
     m_ChromaSDKImpl.ShowColor(4, RED);
     Sleep(50);
     m_ChromaSDKImpl.ResetEffects(4);
+}
+
+void CHeadsetPage::OnBnClickedButtonQuery()
+{
+	OutputDebugStringA((m_ChromaSDKImpl.IsDeviceConnected(ChromaSDK::KRAKEN71_CHROMA) ? "Connected" : "Not Connected"));
 }
