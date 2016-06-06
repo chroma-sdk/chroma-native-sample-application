@@ -70,8 +70,23 @@ void CKeyboardPage::OnBnClickedButtonTutorial()
 
 void CKeyboardPage::OnBnClickedButtonActiveKeys()
 {
-    UINT VKeys[7] = { {0x41}, {0x57}, {0x53}, {0x44}, {VK_LCONTROL}, {VK_LSHIFT}, {VK_SPACE} };     // W,A,S,D, Left Control, Left Shift, Spacebar
-    m_ChromaSDKImpl.ShowKeys(1, 7, VKeys, RGB(0,255,0));
+    UINT VKeys[13] = { 
+                        {0x41},             // W
+                        {0x57},             // A
+                        {0x53},             // S
+                        {0x44},             // D
+                        {VK_LCONTROL},      // Left Control
+                        {VK_LSHIFT},        // Left Shift
+                        {VK_SPACE},         // Spacebar
+                        {VK_ESCAPE},        // Esc
+                        {VK_RETURN},        // Enter
+                        {VK_UP},            // Up
+                        {VK_DOWN},          // Down
+                        {VK_LEFT},          // Left
+                        {VK_RIGHT},         // Right
+                    };
+
+    m_ChromaSDKImpl.ShowKeys(1, 13, VKeys, RGB(0,255,0), TRUE);
 }
 
 void CKeyboardPage::OnBnClickedButtonHealthAmmoMana()

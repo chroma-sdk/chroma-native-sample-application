@@ -365,6 +365,106 @@ DWORD WINAPI Thread_LoadingAnimationOnKeypad(LPVOID lpParameter)
     return 0;
 }
 
+struct _ActiveKeysData
+{
+    UINT numKeys;
+    UINT Key[20];
+    COLORREF Color;
+} ActiveKeysData;
+
+DWORD WINAPI Thread_AnimateActiveKeysOnKeyboard(LPVOID lpParameter)
+{
+    Keyboard::CUSTOM_KEY_EFFECT_TYPE Effect = {};
+
+    // Fill up the key effects.
+    for(UINT i=0; i<ActiveKeysData.numKeys; i++)
+    {
+        COLORREF Color = 0x01000000 | ActiveKeysData.Color;
+
+        switch(ActiveKeysData.Key[i])
+        {
+        case 0x41: Effect.Key[HIBYTE(RZKEY_A)][LOBYTE(RZKEY_A)] = Color; break;
+        case 0x42: Effect.Key[HIBYTE(RZKEY_B)][LOBYTE(RZKEY_B)] = Color; break;
+        case 0x43: Effect.Key[HIBYTE(RZKEY_C)][LOBYTE(RZKEY_C)] = Color; break;
+        case 0x44: Effect.Key[HIBYTE(RZKEY_D)][LOBYTE(RZKEY_D)] = Color; break;
+        case 0x45: Effect.Key[HIBYTE(RZKEY_E)][LOBYTE(RZKEY_E)] = Color; break;
+        case 0x46: Effect.Key[HIBYTE(RZKEY_F)][LOBYTE(RZKEY_F)] = Color; break;
+        case 0x47: Effect.Key[HIBYTE(RZKEY_G)][LOBYTE(RZKEY_G)] = Color; break;
+        case 0x48: Effect.Key[HIBYTE(RZKEY_H)][LOBYTE(RZKEY_H)] = Color; break;
+        case 0x49: Effect.Key[HIBYTE(RZKEY_I)][LOBYTE(RZKEY_I)] = Color; break;
+        case 0x4A: Effect.Key[HIBYTE(RZKEY_J)][LOBYTE(RZKEY_J)] = Color; break;
+        case 0x4B: Effect.Key[HIBYTE(RZKEY_K)][LOBYTE(RZKEY_K)] = Color; break;
+        case 0x4C: Effect.Key[HIBYTE(RZKEY_L)][LOBYTE(RZKEY_L)] = Color; break;
+        case 0x4D: Effect.Key[HIBYTE(RZKEY_M)][LOBYTE(RZKEY_M)] = Color; break;
+        case 0x4E: Effect.Key[HIBYTE(RZKEY_N)][LOBYTE(RZKEY_N)] = Color; break;
+        case 0x4F: Effect.Key[HIBYTE(RZKEY_O)][LOBYTE(RZKEY_O)] = Color; break;
+        case 0x50: Effect.Key[HIBYTE(RZKEY_P)][LOBYTE(RZKEY_P)] = Color; break;
+        case 0x51: Effect.Key[HIBYTE(RZKEY_Q)][LOBYTE(RZKEY_Q)] = Color; break;
+        case 0x52: Effect.Key[HIBYTE(RZKEY_R)][LOBYTE(RZKEY_R)] = Color; break;
+        case 0x53: Effect.Key[HIBYTE(RZKEY_S)][LOBYTE(RZKEY_S)] = Color; break;
+        case 0x54: Effect.Key[HIBYTE(RZKEY_T)][LOBYTE(RZKEY_T)] = Color; break;
+        case 0x55: Effect.Key[HIBYTE(RZKEY_U)][LOBYTE(RZKEY_U)] = Color; break;
+        case 0x56: Effect.Key[HIBYTE(RZKEY_V)][LOBYTE(RZKEY_V)] = Color; break;
+        case 0x57: Effect.Key[HIBYTE(RZKEY_W)][LOBYTE(RZKEY_W)] = Color; break;
+        case 0x58: Effect.Key[HIBYTE(RZKEY_X)][LOBYTE(RZKEY_X)] = Color; break;
+        case 0x59: Effect.Key[HIBYTE(RZKEY_Y)][LOBYTE(RZKEY_Y)] = Color; break;
+        case 0x5A: Effect.Key[HIBYTE(RZKEY_Z)][LOBYTE(RZKEY_Z)] = Color; break;
+        case VK_LCONTROL: Effect.Key[HIBYTE(RZKEY_LCTRL)][LOBYTE(RZKEY_LCTRL)] = Color; break;
+        case VK_LSHIFT: Effect.Key[HIBYTE(RZKEY_LSHIFT)][LOBYTE(RZKEY_LSHIFT)] = Color; break;
+        case VK_SPACE: Effect.Key[HIBYTE(RZKEY_SPACE)][LOBYTE(RZKEY_SPACE)] = Color; break;
+        case VK_ESCAPE: Effect.Key[HIBYTE(RZKEY_ESC)][LOBYTE(RZKEY_ESC)] = Color; break;
+        case VK_RETURN: Effect.Key[HIBYTE(RZKEY_ENTER)][LOBYTE(RZKEY_ENTER)] = Color; break;
+        case VK_UP: Effect.Key[HIBYTE(RZKEY_UP)][LOBYTE(RZKEY_UP)] = Color; break;
+        case VK_DOWN: Effect.Key[HIBYTE(RZKEY_DOWN)][LOBYTE(RZKEY_DOWN)] = Color; break;
+        case VK_LEFT: Effect.Key[HIBYTE(RZKEY_LEFT)][LOBYTE(RZKEY_LEFT)] = Color; break;
+        case VK_RIGHT: Effect.Key[HIBYTE(RZKEY_RIGHT)][LOBYTE(RZKEY_RIGHT)] = Color; break;
+        }
+    }
+
+    CreateKeyboardEffect(Keyboard::CHROMA_CUSTOM_KEY, &Effect, NULL);
+
+    Sleep(50);
+
+    // Create a waterfall effect
+    for(int i=0; i<Keyboard::MAX_ROW+3; i++)
+    {
+        ZeroMemory(Effect.Color, sizeof(Effect.Color));
+
+        for(int row=0; row<Keyboard::MAX_ROW; row++)
+        {
+            for(int col=0; col<Keyboard::MAX_COLUMN; col++)
+            {
+                if((i == row) && (i < Keyboard::MAX_ROW))
+                {
+                    Effect.Color[row][col] = RGB(GetRValue(ORANGE),
+                                                 GetGValue(ORANGE),
+                                                 GetBValue(ORANGE));
+                }
+
+                if((i-1) == row)
+                {
+                    Effect.Color[row][col] = RGB(0.3 * GetRValue(ORANGE),
+                                                 0.3 * GetGValue(ORANGE),
+                                                 0.3 * GetBValue(ORANGE));
+                }
+
+                if((i-2) == row)
+                {
+                    Effect.Color[row][col] = RGB(0.1 * GetRValue(ORANGE),
+                                                 0.1 * GetGValue(ORANGE),
+                                                 0.1 * GetBValue(ORANGE));
+                }
+            }
+        }
+
+        CreateKeyboardEffect(Keyboard::CHROMA_CUSTOM_KEY, &Effect, NULL);
+
+        Sleep(50);
+    }
+
+    return 0;
+}
+
 CChromaSDKImpl::CChromaSDKImpl():m_ChromaSDKModule(NULL)
 {
 }
@@ -476,7 +576,7 @@ void CChromaSDKImpl::PlayLoadingAnimation(UINT DeviceType)
     }
 }
 
-void CChromaSDKImpl::ShowKeys(UINT DeviceType, UINT NumKeys, UINT VKey[], COLORREF Color)
+void CChromaSDKImpl::ShowKeys(UINT DeviceType, UINT NumKeys, UINT VKey[], COLORREF Color, BOOL Animate)
 {
     RZRESULT Result = RZRESULT_INVALID;
 
@@ -485,47 +585,122 @@ void CChromaSDKImpl::ShowKeys(UINT DeviceType, UINT NumKeys, UINT VKey[], COLORR
     case 1:
         if(CreateKeyboardEffect)
         {
-            ChromaSDK::Keyboard::CUSTOM_EFFECT_TYPE Effect = {};
+            //ChromaSDK::Keyboard::CUSTOM_KEY_EFFECT_TYPE Effect = {};
 
-            for(UINT i=0; i<NumKeys; i++)
+            //for(UINT i=0; i<NumKeys; i++)
+            //{
+            //    Color = 0x01000000 | Color;
+            //    switch(VKey[i])
+            //    {
+            //    case 0x41: Effect.Key[HIBYTE(RZKEY_A)][LOBYTE(RZKEY_A)] = Color; break;
+            //    case 0x42: Effect.Key[HIBYTE(RZKEY_B)][LOBYTE(RZKEY_B)] = Color; break;
+            //    case 0x43: Effect.Key[HIBYTE(RZKEY_C)][LOBYTE(RZKEY_C)] = Color; break;
+            //    case 0x44: Effect.Key[HIBYTE(RZKEY_D)][LOBYTE(RZKEY_D)] = Color; break;
+            //    case 0x45: Effect.Key[HIBYTE(RZKEY_E)][LOBYTE(RZKEY_E)] = Color; break;
+            //    case 0x46: Effect.Key[HIBYTE(RZKEY_F)][LOBYTE(RZKEY_F)] = Color; break;
+            //    case 0x47: Effect.Key[HIBYTE(RZKEY_G)][LOBYTE(RZKEY_G)] = Color; break;
+            //    case 0x48: Effect.Key[HIBYTE(RZKEY_H)][LOBYTE(RZKEY_H)] = Color; break;
+            //    case 0x49: Effect.Key[HIBYTE(RZKEY_I)][LOBYTE(RZKEY_I)] = Color; break;
+            //    case 0x4A: Effect.Key[HIBYTE(RZKEY_J)][LOBYTE(RZKEY_J)] = Color; break;
+            //    case 0x4B: Effect.Key[HIBYTE(RZKEY_K)][LOBYTE(RZKEY_K)] = Color; break;
+            //    case 0x4C: Effect.Key[HIBYTE(RZKEY_L)][LOBYTE(RZKEY_L)] = Color; break;
+            //    case 0x4D: Effect.Key[HIBYTE(RZKEY_M)][LOBYTE(RZKEY_M)] = Color; break;
+            //    case 0x4E: Effect.Key[HIBYTE(RZKEY_N)][LOBYTE(RZKEY_N)] = Color; break;
+            //    case 0x4F: Effect.Key[HIBYTE(RZKEY_O)][LOBYTE(RZKEY_O)] = Color; break;
+            //    case 0x50: Effect.Key[HIBYTE(RZKEY_P)][LOBYTE(RZKEY_P)] = Color; break;
+            //    case 0x51: Effect.Key[HIBYTE(RZKEY_Q)][LOBYTE(RZKEY_Q)] = Color; break;
+            //    case 0x52: Effect.Key[HIBYTE(RZKEY_R)][LOBYTE(RZKEY_R)] = Color; break;
+            //    case 0x53: Effect.Key[HIBYTE(RZKEY_S)][LOBYTE(RZKEY_S)] = Color; break;
+            //    case 0x54: Effect.Key[HIBYTE(RZKEY_T)][LOBYTE(RZKEY_T)] = Color; break;
+            //    case 0x55: Effect.Key[HIBYTE(RZKEY_U)][LOBYTE(RZKEY_U)] = Color; break;
+            //    case 0x56: Effect.Key[HIBYTE(RZKEY_V)][LOBYTE(RZKEY_V)] = Color; break;
+            //    case 0x57: Effect.Key[HIBYTE(RZKEY_W)][LOBYTE(RZKEY_W)] = Color; break;
+            //    case 0x58: Effect.Key[HIBYTE(RZKEY_X)][LOBYTE(RZKEY_X)] = Color; break;
+            //    case 0x59: Effect.Key[HIBYTE(RZKEY_Y)][LOBYTE(RZKEY_Y)] = Color; break;
+            //    case 0x5A: Effect.Key[HIBYTE(RZKEY_Z)][LOBYTE(RZKEY_Z)] = Color; break;
+            //    case VK_LCONTROL: Effect.Color[HIBYTE(RZKEY_LCTRL)][LOBYTE(RZKEY_LCTRL)] = Color; break;
+            //    case VK_LSHIFT: Effect.Key[HIBYTE(RZKEY_LSHIFT)][LOBYTE(RZKEY_LSHIFT)] = Color; break;
+            //    case VK_SPACE: Effect.Key[HIBYTE(RZKEY_SPACE)][LOBYTE(RZKEY_SPACE)] = Color; break;
+            //    case VK_ESCAPE: Effect.Key[HIBYTE(RZKEY_ESC)][LOBYTE(RZKEY_ESC)] = Color; break;
+            //    case VK_UP: Effect.Key[HIBYTE(RZKEY_UP)][LOBYTE(RZKEY_UP)] = Color; break;
+            //    case VK_DOWN: Effect.Key[HIBYTE(RZKEY_DOWN)][LOBYTE(RZKEY_DOWN)] = Color; break;
+            //    case VK_LEFT: Effect.Key[HIBYTE(RZKEY_LEFT)][LOBYTE(RZKEY_LEFT)] = Color; break;
+            //    case VK_RIGHT: Effect.Key[HIBYTE(RZKEY_RIGHT)][LOBYTE(RZKEY_RIGHT)] = Color; break;
+            //    }
+            //}
+
+            //Result = CreateKeyboardEffect(ChromaSDK::Keyboard::CHROMA_CUSTOM_KEY, &Effect, NULL);
+
+            //ASSERT(Result == RZRESULT_SUCCESS);
+
+            ActiveKeysData.numKeys = NumKeys;
+
+            ActiveKeysData.Color = Color;
+
+            memcpy_s(ActiveKeysData.Key, 
+                    sizeof(ActiveKeysData.Key), 
+                    VKey, 
+                    (sizeof(VKey) * NumKeys));
+
+            if(Animate == TRUE)
             {
-                switch(VKey[i])
+                HANDLE hThread = CreateThread(NULL, 0, Thread_AnimateActiveKeysOnKeyboard, NULL, 0, NULL);
+                if(WaitForSingleObject(hThread, 5000)  == WAIT_OBJECT_0)
                 {
-                case 0x41: Effect.Color[HIBYTE(RZKEY_A)][LOBYTE(RZKEY_A)] = Color; break;
-                case 0x42: Effect.Color[HIBYTE(RZKEY_B)][LOBYTE(RZKEY_B)] = Color; break;
-                case 0x43: Effect.Color[HIBYTE(RZKEY_C)][LOBYTE(RZKEY_C)] = Color; break;
-                case 0x44: Effect.Color[HIBYTE(RZKEY_D)][LOBYTE(RZKEY_D)] = Color; break;
-                case 0x45: Effect.Color[HIBYTE(RZKEY_E)][LOBYTE(RZKEY_E)] = Color; break;
-                case 0x46: Effect.Color[HIBYTE(RZKEY_F)][LOBYTE(RZKEY_F)] = Color; break;
-                case 0x47: Effect.Color[HIBYTE(RZKEY_G)][LOBYTE(RZKEY_G)] = Color; break;
-                case 0x48: Effect.Color[HIBYTE(RZKEY_H)][LOBYTE(RZKEY_H)] = Color; break;
-                case 0x49: Effect.Color[HIBYTE(RZKEY_I)][LOBYTE(RZKEY_I)] = Color; break;
-                case 0x4A: Effect.Color[HIBYTE(RZKEY_J)][LOBYTE(RZKEY_J)] = Color; break;
-                case 0x4B: Effect.Color[HIBYTE(RZKEY_K)][LOBYTE(RZKEY_K)] = Color; break;
-                case 0x4C: Effect.Color[HIBYTE(RZKEY_L)][LOBYTE(RZKEY_L)] = Color; break;
-                case 0x4D: Effect.Color[HIBYTE(RZKEY_M)][LOBYTE(RZKEY_M)] = Color; break;
-                case 0x4E: Effect.Color[HIBYTE(RZKEY_N)][LOBYTE(RZKEY_N)] = Color; break;
-                case 0x4F: Effect.Color[HIBYTE(RZKEY_O)][LOBYTE(RZKEY_O)] = Color; break;
-                case 0x50: Effect.Color[HIBYTE(RZKEY_P)][LOBYTE(RZKEY_P)] = Color; break;
-                case 0x51: Effect.Color[HIBYTE(RZKEY_Q)][LOBYTE(RZKEY_Q)] = Color; break;
-                case 0x52: Effect.Color[HIBYTE(RZKEY_R)][LOBYTE(RZKEY_R)] = Color; break;
-                case 0x53: Effect.Color[HIBYTE(RZKEY_S)][LOBYTE(RZKEY_S)] = Color; break;
-                case 0x54: Effect.Color[HIBYTE(RZKEY_T)][LOBYTE(RZKEY_T)] = Color; break;
-                case 0x55: Effect.Color[HIBYTE(RZKEY_U)][LOBYTE(RZKEY_U)] = Color; break;
-                case 0x56: Effect.Color[HIBYTE(RZKEY_V)][LOBYTE(RZKEY_V)] = Color; break;
-                case 0x57: Effect.Color[HIBYTE(RZKEY_W)][LOBYTE(RZKEY_W)] = Color; break;
-                case 0x58: Effect.Color[HIBYTE(RZKEY_X)][LOBYTE(RZKEY_X)] = Color; break;
-                case 0x59: Effect.Color[HIBYTE(RZKEY_Y)][LOBYTE(RZKEY_Y)] = Color; break;
-                case 0x5A: Effect.Color[HIBYTE(RZKEY_Z)][LOBYTE(RZKEY_Z)] = Color; break;
-                case VK_LCONTROL: Effect.Color[HIBYTE(RZKEY_LCTRL)][LOBYTE(RZKEY_LCTRL)] = Color; break;
-                case VK_LSHIFT: Effect.Color[HIBYTE(RZKEY_LSHIFT)][LOBYTE(RZKEY_LSHIFT)] = Color; break;
-                case VK_SPACE: Effect.Color[HIBYTE(RZKEY_SPACE)][LOBYTE(RZKEY_SPACE)] = Color; break;
+                    CloseHandle(hThread);
                 }
             }
+            else
+            {
+                Keyboard::CUSTOM_KEY_EFFECT_TYPE Effect = {};
 
-            Result = CreateKeyboardEffect(ChromaSDK::Keyboard::CHROMA_CUSTOM, &Effect, NULL);
+                // Fill up the key effects.
+                for(UINT i=0; i<ActiveKeysData.numKeys; i++)
+                {
+                    COLORREF Color = 0x01000000 | ActiveKeysData.Color;
 
-            ASSERT(Result == RZRESULT_SUCCESS);
+                    switch(ActiveKeysData.Key[i])
+                    {
+                    case 0x41: Effect.Key[HIBYTE(RZKEY_A)][LOBYTE(RZKEY_A)] = Color; break;
+                    case 0x42: Effect.Key[HIBYTE(RZKEY_B)][LOBYTE(RZKEY_B)] = Color; break;
+                    case 0x43: Effect.Key[HIBYTE(RZKEY_C)][LOBYTE(RZKEY_C)] = Color; break;
+                    case 0x44: Effect.Key[HIBYTE(RZKEY_D)][LOBYTE(RZKEY_D)] = Color; break;
+                    case 0x45: Effect.Key[HIBYTE(RZKEY_E)][LOBYTE(RZKEY_E)] = Color; break;
+                    case 0x46: Effect.Key[HIBYTE(RZKEY_F)][LOBYTE(RZKEY_F)] = Color; break;
+                    case 0x47: Effect.Key[HIBYTE(RZKEY_G)][LOBYTE(RZKEY_G)] = Color; break;
+                    case 0x48: Effect.Key[HIBYTE(RZKEY_H)][LOBYTE(RZKEY_H)] = Color; break;
+                    case 0x49: Effect.Key[HIBYTE(RZKEY_I)][LOBYTE(RZKEY_I)] = Color; break;
+                    case 0x4A: Effect.Key[HIBYTE(RZKEY_J)][LOBYTE(RZKEY_J)] = Color; break;
+                    case 0x4B: Effect.Key[HIBYTE(RZKEY_K)][LOBYTE(RZKEY_K)] = Color; break;
+                    case 0x4C: Effect.Key[HIBYTE(RZKEY_L)][LOBYTE(RZKEY_L)] = Color; break;
+                    case 0x4D: Effect.Key[HIBYTE(RZKEY_M)][LOBYTE(RZKEY_M)] = Color; break;
+                    case 0x4E: Effect.Key[HIBYTE(RZKEY_N)][LOBYTE(RZKEY_N)] = Color; break;
+                    case 0x4F: Effect.Key[HIBYTE(RZKEY_O)][LOBYTE(RZKEY_O)] = Color; break;
+                    case 0x50: Effect.Key[HIBYTE(RZKEY_P)][LOBYTE(RZKEY_P)] = Color; break;
+                    case 0x51: Effect.Key[HIBYTE(RZKEY_Q)][LOBYTE(RZKEY_Q)] = Color; break;
+                    case 0x52: Effect.Key[HIBYTE(RZKEY_R)][LOBYTE(RZKEY_R)] = Color; break;
+                    case 0x53: Effect.Key[HIBYTE(RZKEY_S)][LOBYTE(RZKEY_S)] = Color; break;
+                    case 0x54: Effect.Key[HIBYTE(RZKEY_T)][LOBYTE(RZKEY_T)] = Color; break;
+                    case 0x55: Effect.Key[HIBYTE(RZKEY_U)][LOBYTE(RZKEY_U)] = Color; break;
+                    case 0x56: Effect.Key[HIBYTE(RZKEY_V)][LOBYTE(RZKEY_V)] = Color; break;
+                    case 0x57: Effect.Key[HIBYTE(RZKEY_W)][LOBYTE(RZKEY_W)] = Color; break;
+                    case 0x58: Effect.Key[HIBYTE(RZKEY_X)][LOBYTE(RZKEY_X)] = Color; break;
+                    case 0x59: Effect.Key[HIBYTE(RZKEY_Y)][LOBYTE(RZKEY_Y)] = Color; break;
+                    case 0x5A: Effect.Key[HIBYTE(RZKEY_Z)][LOBYTE(RZKEY_Z)] = Color; break;
+                    case VK_LCONTROL: Effect.Key[HIBYTE(RZKEY_LCTRL)][LOBYTE(RZKEY_LCTRL)] = Color; break;
+                    case VK_LSHIFT: Effect.Key[HIBYTE(RZKEY_LSHIFT)][LOBYTE(RZKEY_LSHIFT)] = Color; break;
+                    case VK_SPACE: Effect.Key[HIBYTE(RZKEY_SPACE)][LOBYTE(RZKEY_SPACE)] = Color; break;
+                    case VK_ESCAPE: Effect.Key[HIBYTE(RZKEY_ESC)][LOBYTE(RZKEY_ESC)] = Color; break;
+                    case VK_RETURN: Effect.Key[HIBYTE(RZKEY_ENTER)][LOBYTE(RZKEY_ENTER)] = Color; break;
+                    case VK_UP: Effect.Key[HIBYTE(RZKEY_UP)][LOBYTE(RZKEY_UP)] = Color; break;
+                    case VK_DOWN: Effect.Key[HIBYTE(RZKEY_DOWN)][LOBYTE(RZKEY_DOWN)] = Color; break;
+                    case VK_LEFT: Effect.Key[HIBYTE(RZKEY_LEFT)][LOBYTE(RZKEY_LEFT)] = Color; break;
+                    case VK_RIGHT: Effect.Key[HIBYTE(RZKEY_RIGHT)][LOBYTE(RZKEY_RIGHT)] = Color; break;
+                    }
+                }
+
+                CreateKeyboardEffect(Keyboard::CHROMA_CUSTOM_KEY, &Effect, NULL);
+            }
         }
         break;
     case 5:
@@ -560,32 +735,31 @@ void CChromaSDKImpl::ShowLevel(UINT DeviceType, UINT Hp, UINT Ammo)
         if(CreateKeyboardEffect)
         {
             RZRESULT Result = RZRESULT_INVALID;
-            ChromaSDK::Keyboard::CUSTOM_EFFECT_TYPE Effect;
-
-            // Initialize the array by setting to black.
-            ZeroMemory(&Effect, sizeof(ChromaSDK::Keyboard::CUSTOM_EFFECT_TYPE));
+            ChromaSDK::Keyboard::CUSTOM_KEY_EFFECT_TYPE Effect = {};
 
             // Function keys as health
             UINT RemainingHealth = UINT(Hp/100.0 * 12.0); // 12 function keys
 
             COLORREF HpColor = RGB((((12-RemainingHealth)/12.0)*255), ((RemainingHealth/12.0)*255), 0);
 
+            UINT HpLevel = ChromaSDK::Keyboard::RZKEY_F1;
             for(UINT i=0; i<RemainingHealth; i++)
             {
                 // F1 key starts from row 0, column 3 to column column 15
-                Effect.Color[0][3+i] = HpColor;
+                Effect.Key[HIBYTE(HpLevel+i)][LOBYTE(HpLevel+i)] = 0x01000000 | HpColor;
             }
 
             // Number keys as ammo
             UINT RemainingAmmo = UINT(Ammo/100.0 * 10.0); // 10 number keys
 
+            UINT AmmoLevel = ChromaSDK::Keyboard::RZKEY_1;
             for(UINT i=0; i<RemainingAmmo; i++)
             {
                 // Number keys starts from row 1, column 2 to column 12
-                Effect.Color[1][2+i] = YELLOW;
+                Effect.Key[HIBYTE(AmmoLevel+i)][LOBYTE(AmmoLevel+i)] = 0x01000000 | YELLOW;
             }
 
-            Result = CreateKeyboardEffect(ChromaSDK::Keyboard::CHROMA_CUSTOM, &Effect, NULL);
+            Result = CreateKeyboardEffect(ChromaSDK::Keyboard::CHROMA_CUSTOM_KEY, &Effect, NULL);
 
             ASSERT(Result == RZRESULT_SUCCESS);
         }
