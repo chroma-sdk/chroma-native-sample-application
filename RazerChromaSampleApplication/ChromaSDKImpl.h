@@ -7,6 +7,9 @@
 #include "RzChromaSDKDefines.h"
 #include "RzChromaSDKTypes.h"
 #include "RzErrors.h"
+#include <string>
+
+using std::string;
 
 const COLORREF BLACK = RGB(0,0,0);
 const COLORREF WHITE = RGB(255,255,255);
@@ -46,6 +49,8 @@ public:
     void ShowColor(UINT DeviceType, COLORREF Color);
     void ResetEffects(UINT DeviceType);
     BOOL IsDeviceConnected(RZDEVICEID DeviceId);
+
+	void ShowMessage(LPCWSTR Title, LPCWSTR Message);
 
 private:
     HMODULE m_ChromaSDKModule;

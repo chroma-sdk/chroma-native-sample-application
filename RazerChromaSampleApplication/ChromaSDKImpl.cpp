@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "ChromaSDKImpl.h"
+#include <string>
 
 #ifdef _WIN64
 #define CHROMASDKDLL        _T("RzChromaSDK64.dll")
@@ -9,6 +10,7 @@
 #define CHROMASDKDLL        _T("RzChromaSDK.dll")
 #endif
 
+using std::string;
 using namespace ChromaSDK;
 using namespace ChromaSDK::Keyboard;
 using namespace ChromaSDK::Keypad;
@@ -1698,5 +1700,16 @@ BOOL CChromaSDKImpl::IsDeviceConnected(RZDEVICEID DeviceId)
     }
 
     return FALSE;
+}
+
+void CChromaSDKImpl::ShowMessage(LPCWSTR Title, LPCWSTR Message)
+{
+	MessageBox(
+		NULL,
+		Message,
+		Title,
+		MB_ICONINFORMATION | MB_OK | MB_DEFBUTTON2
+	);
+
 }
 

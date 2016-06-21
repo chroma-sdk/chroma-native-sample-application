@@ -62,5 +62,6 @@ void CHeadsetPage::OnBnClickedButtonDamageTaken()
 
 void CHeadsetPage::OnBnClickedButtonQuery()
 {
-	OutputDebugStringA((m_ChromaSDKImpl.IsDeviceConnected(ChromaSDK::KRAKEN71_CHROMA) ? "Connected" : "Not Connected"));
+	
+	m_ChromaSDKImpl.ShowMessage(L"Kraken",CString(m_ChromaSDKImpl.IsDeviceConnected(ChromaSDK::KRAKEN71_CHROMA) ? "Connected" : "Not Connected"));
 }
