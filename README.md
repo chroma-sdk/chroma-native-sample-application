@@ -89,4 +89,4 @@ Contributors are very welcome! If you got code fixes, please [submit a pull requ
 
 [gitter]: https://gitter.im/ChromaSchool/OfficialSample?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
 [gitterbadge]: https://badges.gitter.im/Join%20Chat.svg
-[sdkbadge]: https://img.shields.io/badge/Chroma%20SDK-1.7.1-brightgreen.svg
+[sdkbadge]: https://img.shields.io/badge/Chroma%20SDK-1.7.5-brightgreen.svg
