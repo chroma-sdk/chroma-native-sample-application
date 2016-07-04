@@ -81,7 +81,11 @@ If you've found any issues or would like to suggest any improvements, please tak
 
 *You can join the Gitter discussion using the badge above.*
 
-Contributors are very welcome! If you got code fixes, please [submit a pull request][newpull] here on GitHub.
+Contributors are very welcome! If you've got code fixes or code samples, please [submit a pull request][newpull].
+
+# I'm new to coding, where do I start?
+
+If you're new to coding and you've never written an application before, this probably isn't the best place to start. You will need at least some experience with writing a C++ application. There are a number of resources online to help you.
 
 [newpull]: ../../pull/new/develop
 [newissue]: ../../issues/new
