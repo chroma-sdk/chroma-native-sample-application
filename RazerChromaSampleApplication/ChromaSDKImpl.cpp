@@ -44,18 +44,18 @@ QUERYDEVICE QueryDevice = NULL;
 
 DWORD WINAPI Thread_LoadingAnimationOnKeyboard(LPVOID lpParameter)
 {
+    RZEFFECTID Frame0 = GUID_NULL;
+    RZEFFECTID Frame1 = GUID_NULL;
+    RZEFFECTID Frame2 = GUID_NULL;
+    RZEFFECTID Frame3 = GUID_NULL;
+    RZEFFECTID Frame4 = GUID_NULL;
+    RZEFFECTID Frame5 = GUID_NULL;
+    RZEFFECTID Frame6 = GUID_NULL;
+
     if(CreateKeyboardEffect)
     {
         // Loading animation
         ChromaSDK::Keyboard::CUSTOM_EFFECT_TYPE Effect = {};
-
-        RZEFFECTID Frame0 = GUID_NULL;
-        RZEFFECTID Frame1 = GUID_NULL;
-        RZEFFECTID Frame2 = GUID_NULL;
-        RZEFFECTID Frame3 = GUID_NULL;
-        RZEFFECTID Frame4 = GUID_NULL;
-        RZEFFECTID Frame5 = GUID_NULL;
-        RZEFFECTID Frame6 = GUID_NULL;
 
         // Create the animation frames if not created
         CreateKeyboardEffect(ChromaSDK::Keyboard::CHROMA_NONE, NULL, &Frame0);
@@ -142,6 +142,17 @@ DWORD WINAPI Thread_LoadingAnimationOnKeyboard(LPVOID lpParameter)
         CreateKeyboardEffect(ChromaSDK::Keyboard::CHROMA_STATIC, &StaticEffect, NULL);
     }
 
+    if(DeleteEffect != NULL)
+    {
+        DeleteEffect(Frame0);
+        DeleteEffect(Frame1);
+        DeleteEffect(Frame2);
+        DeleteEffect(Frame3);
+        DeleteEffect(Frame4);
+        DeleteEffect(Frame5);
+        DeleteEffect(Frame6);
+    }
+
     return 0;
 }
 
@@ -204,36 +215,48 @@ DWORD WINAPI Thread_LoadingAnimationOnMice(LPVOID lpParameter)
 
         Sleep(500);
 
-        for(UINT i=0; i<7; i++)
+        //for(UINT i=0; i<7; i++)
+        //{
+        //    CustomEffect.Color[HIBYTE(RZLED2_LEFT_SIDE7)-i][0] = ORANGE;
+        //    CustomEffect.Color[HIBYTE(RZLED2_RIGHT_SIDE7)-i][6] = ORANGE;
+
+        //    if(i == 0)
+        //    {
+        //        // For Razer Diamondback bottom LEDs.
+        //        CustomEffect.Color[8][LOBYTE(RZLED2_BOTTOM1)] = RED;
+        //        CustomEffect.Color[8][LOBYTE(RZLED2_BOTTOM5)] = RED;
+        //    }
+        //    else if(i == 2)
+        //    {
+        //        CustomEffect.Color[HIBYTE(RZLED2_LOGO)][LOBYTE(RZLED2_LOGO)] = ORANGE;
+
+        //        // For Razer Diamondback bottom LEDs.
+        //        CustomEffect.Color[8][LOBYTE(RZLED2_BOTTOM2)] = RED;
+        //        CustomEffect.Color[8][LOBYTE(RZLED2_BOTTOM4)] = RED;
+        //    }
+        //    else if(i == 4)
+        //    {
+        //        // For Razer Naga Epic numpad LED.
+        //        CustomEffect.Color[HIBYTE(RZLED2_BACKLIGHT)][LOBYTE(RZLED2_BACKLIGHT)] = ORANGE;
+        //    }
+        //    else if(i == 6)
+        //    {
+        //        CustomEffect.Color[HIBYTE(RZLED2_SCROLLWHEEL)][LOBYTE(RZLED2_SCROLLWHEEL)] = ORANGE;
+
+        //        // For Razer Diamondback bottom LEDs.
+        //        CustomEffect.Color[8][LOBYTE(RZLED2_BOTTOM3)] = RED;
+        //    }
+
+        //    CreateMouseEffect(ChromaSDK::Mouse::CHROMA_CUSTOM2, &CustomEffect, NULL);
+
+        //    Sleep(50);
+        //}
+
+        for(INT row=Mouse::MAX_ROW-1; row>=0; row--)
         {
-            CustomEffect.Color[HIBYTE(RZLED2_LEFT_SIDE7)-i][0] = ORANGE;
-            CustomEffect.Color[HIBYTE(RZLED2_RIGHT_SIDE7)-i][6] = ORANGE;
-
-            if(i == 0)
+            for(UINT col=0; col<Mouse::MAX_COLUMN; col++)
             {
-                // For Razer Diamondback bottom LEDs.
-                CustomEffect.Color[8][LOBYTE(RZLED2_BOTTOM1)] = RED;
-                CustomEffect.Color[8][LOBYTE(RZLED2_BOTTOM5)] = RED;
-            }
-            else if(i == 2)
-            {
-                CustomEffect.Color[HIBYTE(RZLED2_LOGO)][LOBYTE(RZLED2_LOGO)] = ORANGE;
-
-                // For Razer Diamondback bottom LEDs.
-                CustomEffect.Color[8][LOBYTE(RZLED2_BOTTOM2)] = RED;
-                CustomEffect.Color[8][LOBYTE(RZLED2_BOTTOM4)] = RED;
-            }
-            else if(i == 4)
-            {
-                // For Razer Naga Epic numpad LED.
-                CustomEffect.Color[HIBYTE(RZLED2_BACKLIGHT)][LOBYTE(RZLED2_BACKLIGHT)] = ORANGE;
-            }
-            else if(i == 6)
-            {
-                CustomEffect.Color[HIBYTE(RZLED2_SCROLLWHEEL)][LOBYTE(RZLED2_SCROLLWHEEL)] = ORANGE;
-
-                // For Razer Diamondback bottom LEDs.
-                CustomEffect.Color[8][LOBYTE(RZLED2_BOTTOM3)] = RED;
+                CustomEffect.Color[row][col] = ORANGE;
             }
 
             CreateMouseEffect(ChromaSDK::Mouse::CHROMA_CUSTOM2, &CustomEffect, NULL);
@@ -258,16 +281,16 @@ DWORD WINAPI Thread_LoadingAnimationOnKeypad(LPVOID lpParameter)
         DeviceId = TARTARUS_CHROMA;
     }
 
+    RZEFFECTID Frame0 = GUID_NULL;
+    RZEFFECTID Frame1 = GUID_NULL;
+    RZEFFECTID Frame2 = GUID_NULL;
+    RZEFFECTID Frame3 = GUID_NULL;
+    RZEFFECTID Frame4 = GUID_NULL;
+    RZEFFECTID Frame5 = GUID_NULL;
+
     if(CreateKeypadEffect)
     {
         ChromaSDK::Keypad::CUSTOM_EFFECT_TYPE Effect = {};
-
-        RZEFFECTID Frame0 = GUID_NULL;
-        RZEFFECTID Frame1 = GUID_NULL;
-        RZEFFECTID Frame2 = GUID_NULL;
-        RZEFFECTID Frame3 = GUID_NULL;
-        RZEFFECTID Frame4 = GUID_NULL;
-        RZEFFECTID Frame5 = GUID_NULL;
 
         if(DeviceId == ORBWEAVER_CHROMA)    // Create effects for Orbweaver)
         {
@@ -360,6 +383,16 @@ DWORD WINAPI Thread_LoadingAnimationOnKeypad(LPVOID lpParameter)
         SetEffect(Frame4);
         Sleep(100);
         SetEffect(Frame5);
+    }
+
+    if(DeleteEffect != NULL)
+    {
+        DeleteEffect(Frame0);
+        DeleteEffect(Frame1);
+        DeleteEffect(Frame2);
+        DeleteEffect(Frame3);
+        DeleteEffect(Frame4);
+        DeleteEffect(Frame5);
     }
 
     return 0;
@@ -947,10 +980,9 @@ void CChromaSDKImpl::ShowAlert(UINT DeviceType, COLORREF Color)
 
             CreateMouseEffect(ChromaSDK::Mouse::CHROMA_CUSTOM2, &CustomEffect, &Alert);
 
-            ChromaSDK::Mouse::NO_EFFECT_TYPE NoEffect = {};
-            NoEffect.LEDId = RZLED_ALL;
+            ChromaSDK::Mouse::CUSTOM_EFFECT_TYPE2 NoEffect = {};
 
-            CreateMouseEffect(ChromaSDK::Mouse::CHROMA_NONE, &NoEffect, &NoAlert);
+            CreateMouseEffect(ChromaSDK::Mouse::CHROMA_CUSTOM2, &NoEffect, &NoAlert);
 
             for(UINT t=0; t<3; t++)
             {
@@ -1540,12 +1572,11 @@ void CChromaSDKImpl::ShowDamageEffect(UINT DeviceType)
                 }
             }
 
-            ChromaSDK::Mouse::STATIC_EFFECT_TYPE NoEffect = {};
-            NoEffect.LEDId = RZLED_ALL;
+            ChromaSDK::Mouse::CUSTOM_EFFECT_TYPE2 NoEffect = {};
 
             CreateMouseEffect(ChromaSDK::Mouse::CHROMA_CUSTOM2, &Effect, NULL);
             Sleep(50);
-            CreateMouseEffect(ChromaSDK::Mouse::CHROMA_NONE, &NoEffect, NULL);
+            CreateMouseEffect(ChromaSDK::Mouse::CHROMA_CUSTOM2, &NoEffect, NULL);
         }
         break;
     case 4:
@@ -1639,7 +1670,10 @@ void CChromaSDKImpl::ResetEffects(UINT DeviceType)
 
         if(CreateMouseEffect)
         {
-            CreateMouseEffect(ChromaSDK::Mouse::CHROMA_NONE, NULL, NULL);
+            //CreateMouseEffect(ChromaSDK::Mouse::CHROMA_NONE, NULL, NULL);
+            // Use custom effect command is faster because some of the mice has fade-to-black effect.
+            ChromaSDK::Mouse::CUSTOM_EFFECT_TYPE2 None = {};
+            CreateMouseEffect(ChromaSDK::Mouse::CHROMA_CUSTOM2, &None, NULL);
         }
 
         if(CreateHeadsetEffect)
@@ -1667,7 +1701,10 @@ void CChromaSDKImpl::ResetEffects(UINT DeviceType)
     case 3:
         if(CreateMouseEffect)
         {
-            CreateMouseEffect(ChromaSDK::Mouse::CHROMA_NONE, NULL, NULL);
+            //CreateMouseEffect(ChromaSDK::Mouse::CHROMA_NONE, NULL, NULL);
+            // Use custom effect command is faster because some of the mice has fade-to-black effect.
+            ChromaSDK::Mouse::CUSTOM_EFFECT_TYPE2 None = {};
+            CreateMouseEffect(ChromaSDK::Mouse::CHROMA_CUSTOM2, &None, NULL);
         }
         break;
     case 4:

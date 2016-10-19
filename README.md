@@ -93,4 +93,4 @@ If you're new to coding and you've never written an application before, this pro
 
 [gitter]: https://gitter.im/ChromaSchool/OfficialSample?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
 [gitterbadge]: https://badges.gitter.im/Join%20Chat.svg
-[sdkbadge]: https://img.shields.io/badge/Chroma%20SDK-1.7.5-brightgreen.svg
+[sdkbadge]: https://img.shields.io/badge/Chroma%20SDK-1.9.6-brightgreen.svg
