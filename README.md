@@ -81,7 +81,11 @@ If you've found any issues or would like to suggest any improvements, please tak
 
 *You can join the Gitter discussion using the badge above.*
 
-Contributors are very welcome! If you got code fixes, please [submit a pull request][newpull] here on GitHub.
+Contributors are very welcome! If you've got code fixes or code samples, please [submit a pull request][newpull].
+
+# I'm new to coding, where do I start?
+
+If you're new to coding and you've never written an application before, this probably isn't the best place to start. You will need at least some experience with writing a C++ application. There are a number of resources online to help you.
 
 [newpull]: ../../pull/new/develop
 [newissue]: ../../issues/new
@@ -89,4 +93,4 @@ Contributors are very welcome! If you got code fixes, please [submit a pull requ
 
 [gitter]: https://gitter.im/ChromaSchool/OfficialSample?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
 [gitterbadge]: https://badges.gitter.im/Join%20Chat.svg
-[sdkbadge]: https://img.shields.io/badge/Chroma%20SDK-1.7.1-brightgreen.svg
+[sdkbadge]: https://img.shields.io/badge/Chroma%20SDK-1.9.6-brightgreen.svg
