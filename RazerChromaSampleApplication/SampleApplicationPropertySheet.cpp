@@ -11,15 +11,15 @@
 IMPLEMENT_DYNAMIC(CSampleApplicationPropertySheet, CPropertySheet)
 
 CSampleApplicationPropertySheet::CSampleApplicationPropertySheet(UINT nIDCaption, CWnd* pParentWnd, UINT iSelectPage)
-    :CPropertySheet(nIDCaption, pParentWnd, iSelectPage)
+	:CPropertySheet(nIDCaption, pParentWnd, iSelectPage)
 {
-    m_psh.dwFlags &= ~(PSH_HASHELP);
+	m_psh.dwFlags &= ~(PSH_HASHELP);
 }
 
 CSampleApplicationPropertySheet::CSampleApplicationPropertySheet(LPCTSTR pszCaption, CWnd* pParentWnd, UINT iSelectPage)
-    :CPropertySheet(pszCaption, pParentWnd, iSelectPage)
+	: CPropertySheet(pszCaption, pParentWnd, iSelectPage)
 {
-    m_psh.dwFlags &= ~(PSH_HASHELP);
+	m_psh.dwFlags &= ~(PSH_HASHELP);
 }
 
 CSampleApplicationPropertySheet::~CSampleApplicationPropertySheet()
@@ -28,18 +28,18 @@ CSampleApplicationPropertySheet::~CSampleApplicationPropertySheet()
 
 BOOL CSampleApplicationPropertySheet::OnInitDialog()
 {
-    m_ChromaSDKImpl.Initialize();
+	m_ChromaSDKImpl.Initialize();
 
-    return CPropertySheet::OnInitDialog();
+	return CPropertySheet::OnInitDialog();
 }
 
 BEGIN_MESSAGE_MAP(CSampleApplicationPropertySheet, CPropertySheet)
-    ON_WM_DESTROY()
+	ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
 
 // CSampleApplicationPropertySheet message handlers
 void CSampleApplicationPropertySheet::OnDestroy()
 {
-    m_ChromaSDKImpl.UnInitialize();
+	m_ChromaSDKImpl.UnInitialize();
 }

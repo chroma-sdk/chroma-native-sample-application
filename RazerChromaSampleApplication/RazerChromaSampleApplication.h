@@ -5,7 +5,7 @@
 #pragma once
 
 #ifndef __AFXWIN_H__
-    #error "include 'stdafx.h' before including this file for PCH"
+#error "include 'stdafx.h' before including this file for PCH"
 #endif
 
 #include "resource.h"        // main symbols
@@ -18,15 +18,15 @@
 class CRazerChromaSampleApplicationApp : public CWinApp
 {
 public:
-    CRazerChromaSampleApplicationApp();
+	CRazerChromaSampleApplicationApp();
 
-// Overrides
+	// Overrides
 public:
-    virtual BOOL InitInstance();
+	virtual BOOL InitInstance();
 
-// Implementation
+	// Implementation
 
-    DECLARE_MESSAGE_MAP()
+	DECLARE_MESSAGE_MAP()
 };
 
 extern CRazerChromaSampleApplicationApp theApp;
