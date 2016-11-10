@@ -6,29 +6,29 @@
 
 class CHealthAmmoManaDlg : public CDialogEx
 {
-    DECLARE_DYNAMIC(CHealthAmmoManaDlg)
+	DECLARE_DYNAMIC(CHealthAmmoManaDlg)
 
 public:
-    CHealthAmmoManaDlg(CWnd* pParent = NULL);   // standard constructor
-    virtual ~CHealthAmmoManaDlg();
+	CHealthAmmoManaDlg(CWnd* pParent = NULL);   // standard constructor
+	virtual ~CHealthAmmoManaDlg();
 
-// Dialog Data
-    enum { IDD = IDD_DIALOG_HEALTH_AMMO_MANA };
+	// Dialog Data
+	enum { IDD = IDD_DIALOG_HEALTH_AMMO_MANA };
 
 private:
-    CChromaSDKImpl m_ChromaSDKImpl;
-    CWnd* m_pParent;
-    UINT m_DeviceType;
+	CChromaSDKImpl m_ChromaSDKImpl;
+	CWnd* m_pParent;
+	UINT m_DeviceType;
 
 protected:
-    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-    virtual BOOL OnInitDialog();
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+	virtual BOOL OnInitDialog();
 
-    DECLARE_MESSAGE_MAP()
+	DECLARE_MESSAGE_MAP()
 
 public:
-    CSliderCtrl m_Health;
-    CSliderCtrl m_AmmoMana;
-    afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
-    afx_msg void OnDestroy();
+	CSliderCtrl m_Health;
+	CSliderCtrl m_AmmoMana;
+	afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
+	afx_msg void OnDestroy();
 };
