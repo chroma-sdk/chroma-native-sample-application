@@ -77,11 +77,7 @@ If you've found any issues or would like to suggest any improvements, please tak
 
 ## Contributing
 
-[![Gitter][gitterbadge]][gitter]
-
-*You can join the Gitter discussion using the badge above.*
-
-Contributors are very welcome! If you've got code fixes or code samples, please [submit a pull request][newpull].
+Contributors are very welcome! If you've got code fixes or code samples, please [submit a pull request][newpull] and remember to target the develop branch.
 
 # I'm new to coding, where do I start?
 
@@ -91,6 +87,4 @@ If you're new to coding and you've never written an application before, this pro
 [newissue]: ../../issues/new
 [openissues]: ../../issues
 
-[gitter]: https://gitter.im/ChromaSchool/OfficialSample?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
-[gitterbadge]: https://badges.gitter.im/Join%20Chat.svg
 [sdkbadge]: https://img.shields.io/badge/Chroma%20SDK-1.9.6-brightgreen.svg
