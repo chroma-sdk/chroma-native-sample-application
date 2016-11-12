@@ -13,63 +13,29 @@ All other trademarks are property of their respective owners.
 ### Loading Animation
 Yellow wave effect to show loading progress.
 
-Supported Razer Devices:
-* Blackwidow Chroma (all variations) / DeathStalker Chroma
-* Mamba Chroma (TE & Wireless) / Diamondback Chroma
-* Orbweaver Chroma
-* FireFly 
-
 ### Tutorial
 Lights up certain keys in steps as a controls tutorial.
-
-Supported Razer Devices:
-* Blackwidow Chroma (all variations)
-* Orbweaver Chroma
 
 ### Active Keys
 Lights up specific keys to highlight available control options.
 
-Supported Razer Devices:
-* Blackwidow Chroma (all variations)
-* Orbweaver Chroma
+### Alphabet
+Lights up each letter of the alphabet in sequence to help test compatibility of `CUSTOM_KEY` translation.
 
 ### Health/Ammo/Mana Keys
 Indicates the level of health/ammo/mana available.
 
-Supported Razer Devices:
-* Blackwidow Chroma (all variations)
-* Mamba Chroma (TE & Wireless) / Diamondback Chroma
-* Orbweaver Chroma
-* FireFly 
-
 ### Alerts
 Flashes all LEDs on the device three times to indicate an alert.
-
-Supported Razer Devices:
-* All Chroma devices
 
 ### Cooldown Timer
 Indicates the time remaining / cooldown period.
 
-Supported Razer Devices:
-* Blackwidow Chroma (excl. Tournament Edition due to lack of a number pad)
-* Mamba Chroma (TE & Wireless) / Diamondback Chroma
-* Orbweaver Chroma
-* FireFly
-
 ### Ambient Effect
 Creates an ambient lighting effect that mimics the display on the keyboard.
 
-Supported Razer Devices:
-* Blackwidow Chroma (all variations)
-* Orbweaver Chroma
-
 ### Damage Taken
 Quick flash of red to indicate being hit/damaged.
-
-Supported Razer Devices:
-* All Chroma devices
-
 
 ## Submitting feedback / issues
 
