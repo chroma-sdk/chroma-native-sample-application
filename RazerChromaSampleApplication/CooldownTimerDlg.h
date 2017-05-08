@@ -7,27 +7,27 @@
 
 class CCooldownTimerDlg : public CDialogEx
 {
-	DECLARE_DYNAMIC(CCooldownTimerDlg)
+    DECLARE_DYNAMIC(CCooldownTimerDlg)
 
 public:
-	CCooldownTimerDlg(CWnd* pParent = NULL);   // standard constructor
-	virtual ~CCooldownTimerDlg();
+    CCooldownTimerDlg(CWnd* pParent = NULL);   // standard constructor
+    virtual ~CCooldownTimerDlg();
 
-	// Dialog Data
-	enum { IDD = IDD_DIALOG_COOLDOWN_TIMER };
+// Dialog Data
+    enum { IDD = IDD_DIALOG_COOLDOWN_TIMER };
 
 private:
-	CChromaSDKImpl m_ChromaSDKImpl;
-	CWnd* m_pParent;
-	UINT m_DeviceType;
+    CWnd* m_pParent;
+    UINT m_DeviceType;
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
-	virtual BOOL OnInitDialog();
+    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+    virtual BOOL OnInitDialog();
 
-	DECLARE_MESSAGE_MAP()
+    DECLARE_MESSAGE_MAP()
 
 public:
-	afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
-	CSliderCtrl m_Timer;
+    afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
+    CSliderCtrl m_Timer;
+    afx_msg void OnDestroy();
 };
