@@ -6,24 +6,21 @@
 
 class CHeadsetPage : public CPropertyPage
 {
-	DECLARE_DYNAMIC(CHeadsetPage)
+    DECLARE_DYNAMIC(CHeadsetPage)
 
 public:
-	CHeadsetPage();
-	virtual ~CHeadsetPage();
+    CHeadsetPage();
+    virtual ~CHeadsetPage();
 
-private:
-	CChromaSDKImpl m_ChromaSDKImpl;
-
-	// Dialog Data
-	enum { IDD = IDD_HEADSET_PAGE };
+// Dialog Data
+    enum { IDD = IDD_HEADSET_PAGE };
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
+    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
-	DECLARE_MESSAGE_MAP()
+    DECLARE_MESSAGE_MAP()
 public:
-	afx_msg void OnBnClickedButtonHealthAmmoMana();
-	afx_msg void OnBnClickedButtonAlerts();
-	afx_msg void OnBnClickedButtonDamageTaken();
+    afx_msg void OnBnClickedButtonHealthAmmoMana();
+    afx_msg void OnBnClickedButtonAlerts();
+    afx_msg void OnBnClickedButtonDamageTaken();
 };

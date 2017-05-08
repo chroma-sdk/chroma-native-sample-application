@@ -1,20 +1,18 @@
 #pragma once
 
-#include "ChromaSDKImpl.h"
 
+// CChromaLinkPage dialog
 
-// CMousematPage dialog
-
-class CMousematPage : public CPropertyPage
+class CChromaLinkPage : public CPropertyPage
 {
-    DECLARE_DYNAMIC(CMousematPage)
+    DECLARE_DYNAMIC(CChromaLinkPage)
 
 public:
-    CMousematPage();
-    virtual ~CMousematPage();
+    CChromaLinkPage();
+    virtual ~CChromaLinkPage();
 
 // Dialog Data
-    enum { IDD = IDD_MOUSEMAT_PAGE };
+    enum { IDD = IDD_CHROMALINK_PAGE };
 
 protected:
     virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
@@ -24,6 +22,5 @@ public:
     afx_msg void OnBnClickedButtonLoadingAnimation();
     afx_msg void OnBnClickedButtonHealthAmmoMana();
     afx_msg void OnBnClickedButtonAlerts();
-    afx_msg void OnBnClickedButtonCooldownTimer();
     afx_msg void OnBnClickedButtonDamageTaken();
 };

@@ -108,8 +108,10 @@
     <ClInclude Include="..\ChromaSDK\inc\RzErrors.h" />
     <ClInclude Include="AlertDlg.h" />
     <ClInclude Include="AmbientEffectDlg.h" />
+    <ClInclude Include="ChromaLinkPage.h" />
     <ClInclude Include="ChromaSDKImpl.h" />
     <ClInclude Include="CooldownTimerDlg.h" />
+    <ClInclude Include="FrameController.h" />
     <ClInclude Include="HeadsetPage.h" />
     <ClInclude Include="HealthAmmoManaDlg.h" />
     <ClInclude Include="KeyboardPage.h" />
@@ -126,8 +128,10 @@
   <ItemGroup>
     <ClCompile Include="AlertDlg.cpp" />
     <ClCompile Include="AmbientEffectDlg.cpp" />
+    <ClCompile Include="ChromaLinkPage.cpp" />
     <ClCompile Include="ChromaSDKImpl.cpp" />
     <ClCompile Include="CooldownTimerDlg.cpp" />
+    <ClCompile Include="FrameController.cpp" />
     <ClCompile Include="HeadsetPage.cpp" />
     <ClCompile Include="HealthAmmoManaDlg.cpp" />
     <ClCompile Include="KeyboardPage.cpp" />

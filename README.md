@@ -13,62 +13,75 @@ All other trademarks are property of their respective owners.
 ### Loading Animation
 Yellow wave effect to show loading progress.
 
-Supported Razer Devices:
-* Blackwidow Chroma (all variations) / DeathStalker Chroma
-* Mamba Chroma (TE & Wireless) / Diamondback Chroma
-* Orbweaver Chroma
-* FireFly 
+Supported Chroma Devices:
+* Keyboards
+* Mousemats
+* Mice
+* Headsets
+* Keypads
+* Chroma Linked Devices
 
 ### Tutorial
 Lights up certain keys in steps as a controls tutorial.
 
-Supported Razer Devices:
-* Blackwidow Chroma (all variations)
-* Orbweaver Chroma
+Supported Chroma Devices:
+* Keyboards
+* Keypads
 
 ### Active Keys
 Lights up specific keys to highlight available control options.
 
-Supported Razer Devices:
-* Blackwidow Chroma (all variations)
-* Orbweaver Chroma
+Supported Chroma Devices:
+* Keyboards
+* Keypads
 
 ### Health/Ammo/Mana Keys
 Indicates the level of health/ammo/mana available.
 
-Supported Razer Devices:
-* Blackwidow Chroma (all variations)
-* Mamba Chroma (TE & Wireless) / Diamondback Chroma
-* Orbweaver Chroma
-* FireFly 
+Supported Chroma Devices:
+* Keyboards
+* Mousemats
+* Mice
+* Headsets
+* Keypads
+* Chroma Linked Devices
 
 ### Alerts
 Flashes all LEDs on the device three times to indicate an alert.
 
 Supported Razer Devices:
-* All Chroma devices
+* Keyboards
+* Mousemats
+* Mice
+* Headsets
+* Keypads
+* Chroma Linked Devices
 
 ### Cooldown Timer
 Indicates the time remaining / cooldown period.
 
 Supported Razer Devices:
-* Blackwidow Chroma (excl. Tournament Edition due to lack of a number pad)
-* Mamba Chroma (TE & Wireless) / Diamondback Chroma
-* Orbweaver Chroma
-* FireFly
+* Keyboards
+* Mousemats
+* Keypads
 
 ### Ambient Effect
 Creates an ambient lighting effect that mimics the display on the keyboard.
 
 Supported Razer Devices:
-* Blackwidow Chroma (all variations)
-* Orbweaver Chroma
+* Keyboards
+* Keypads
 
 ### Damage Taken
 Quick flash of red to indicate being hit/damaged.
 
 Supported Razer Devices:
-* All Chroma devices
+* Keyboards
+* Mousemats
+* Mice
+* Headsets
+* Keypads
+* Chroma Linked Devices
 
 
 ## Submitting feedback / issues
@@ -87,4 +100,4 @@ If you're new to coding and you've never written an application before, this pro
 [newissue]: ../../issues/new
 [openissues]: ../../issues
 
-[sdkbadge]: https://img.shields.io/badge/Chroma%20SDK-1.9.6-brightgreen.svg
+[sdkbadge]: https://img.shields.io/badge/Chroma%20SDK-2.0.11-brightgreen.svg

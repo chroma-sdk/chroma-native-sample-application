@@ -42,25 +42,28 @@
     <ClInclude Include="KeyboardPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MousematPage.h">
+    <ClInclude Include="..\ChromaSDK\inc\RzChromaSDKDefines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MicePage.h">
+    <ClInclude Include="..\ChromaSDK\inc\RzChromaSDKTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HeadsetPage.h">
+    <ClInclude Include="..\ChromaSDK\inc\RzErrors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ChromaSDKImpl.h">
+    <ClInclude Include="FrameController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TutorialDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HealthAmmoManaDlg.h">
+    <ClInclude Include="AlertDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AlertDlg.h">
+    <ClInclude Include="MousematPage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthAmmoManaDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CooldownTimerDlg.h">
@@ -69,16 +72,19 @@
     <ClInclude Include="AmbientEffectDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MicePage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HeadsetPage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="KeypadPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\ChromaSDK\inc\RzChromaSDKDefines.h">
+    <ClInclude Include="ChromaLinkPage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\ChromaSDK\inc\RzChromaSDKTypes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\ChromaSDK\inc\RzErrors.h">
+    <ClInclude Include="ChromaSDKImpl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -95,25 +101,19 @@
     <ClCompile Include="KeyboardPage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MousematPage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MicePage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HeadsetPage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ChromaSDKImpl.cpp">
+    <ClCompile Include="FrameController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TutorialDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HealthAmmoManaDlg.cpp">
+    <ClCompile Include="AlertDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AlertDlg.cpp">
+    <ClCompile Include="MousematPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthAmmoManaDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CooldownTimerDlg.cpp">
@@ -122,7 +122,19 @@
     <ClCompile Include="AmbientEffectDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MicePage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HeadsetPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="KeypadPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChromaLinkPage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChromaSDKImpl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
