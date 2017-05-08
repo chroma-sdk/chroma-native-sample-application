@@ -35,6 +35,7 @@ Supported Chroma Devices:
 * Keyboards
 * Keypads
 
+
 ### Health/Ammo/Mana Keys
 Indicates the level of health/ammo/mana available.
 
@@ -82,7 +83,6 @@ Supported Razer Devices:
 * Headsets
 * Keypads
 * Chroma Linked Devices
-
 
 ## Submitting feedback / issues
 
